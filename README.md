@@ -312,3 +312,16 @@ lalu buat terminal baru sebanyak 2 tab dan jalankan `./navi` dan jangan lupa unt
 
 `cd praktikum/modul_3/soal_1`
 
+### langkah ke 6 
+
+`cat history.log` untuk cek log yang sudah ada sebelumnya.
+
+### expected output 
+1.Koneksi via IP + PORT dari protocol.h
+2.Client asinkron (pakai select(), bukan fork)
+3.Server bisa handle banyak client (non-blocking)
+4.Nama harus unik (ini penting banget)
+5.Broadcast ke semua client
+6.Admin system + password + menu
+7.Logging format khusus (history.log)
+
