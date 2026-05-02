@@ -49,9 +49,72 @@ typedef struct {
 
 ### langkah ketiga 
 
-membuat file program 'nano navi.c'
+membuat file program 
 
-dan file program 'nano wired.c'
+'nano navi.c'
+
+```awk
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <sys/select.h>
+#include "protocol.h"
+
+int main() {
+    int sock;
+    struct sockaddr_in server;
+    char buffer[BUFFER_SIZE], name[50];
+
+    sock = socket(AF_INET, SOCK_STREAM, 0);
+    server.sin_family = AF_INET;
+    server.sin_port = htons(PORT);
+    inet_pton(AF_INET, "127.0.0.1", &server.sin_addr);
+
+    if (connect(sock, (struct sockaddr *)&server, sizeof(server)) < 0) {
+        perror("Connect failed"); return 1;
+    }
+
+    printf("Enter your name: ");
+    fgets(name, sizeof(name), stdin);
+    name[strcspn(name, "\n")] = '\0';
+    send(sock, name, strlen(name), 0);
+
+    fd_set readfds;
+    while (1) {
+        FD_ZERO(&readfds);
+        FD_SET(0, &readfds);
+        FD_SET(sock, &readfds);
+
+        if (select(sock + 1, &readfds, NULL, NULL, NULL) < 0) continue;
+
+        if (FD_ISSET(sock, &readfds)) {
+            int val = recv(sock, buffer, BUFFER_SIZE - 1, 0);
+            if (val <= 0) { printf("\nDisconnected from The Wired.\n"); break; }
+            buffer[val] = '\0';
+            printf("%s", buffer);
+            fflush(stdout);
+            
+            // Auto-exit jika ditolak server
+            if (strstr(buffer, "Name already used") || strstr(buffer, "Wrong password")) break;
+        }
+
+        if (FD_ISSET(0, &readfds)) {
+            fgets(buffer, BUFFER_SIZE, stdin);
+            send(sock, buffer, strlen(buffer), 0);
+            if (strncmp(buffer, "/exit", 5) == 0) break;
+        }
+    }
+    close(sock);
+    return 0;
+}
+```
+
+dan file program 
+
+'nano wired.c'
+
 lalu diisi dengan code seperti berikut 
 ```awk
 #include <stdio.h>
