@@ -51,7 +51,7 @@ typedef struct {
 
 membuat file program navi.c untuk bagian pengguna dan wired.c sebagai server
 
-'nano navi.c' lalu diisi dengan code seperti ini:
+`nano navi.c` lalu diisi dengan code seperti ini:
 
 ```awk
 #include <stdio.h>
@@ -113,7 +113,7 @@ int main() {
 
 dan file program 
 
-'nano wired.c'
+`nano wired.c`
 
 lalu diisi dengan code seperti berikut 
 ```awk
@@ -296,5 +296,19 @@ int main() {
     }
 }
 ```
+### langkah ke 4
 
+kita compile program yang telah dibuat sebelumnya dengan cara 
+
+`gcc wired.c -o wired`
+
+`gcc navi.c -o navi`
+
+### langkah ke 5
+
+jalankan `wired.c` untuk di terminal 1
+
+lalu buat terminal baru sebanyak 2 tab dan jalankan `./navi` dan jangan lupa untuk masuk ke direktori yang dituju dengan cara
+
+`cd praktikum/modul_3/soal_1`
 
