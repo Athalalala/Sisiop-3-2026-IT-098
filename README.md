@@ -49,9 +49,9 @@ typedef struct {
 
 ### langkah ketiga 
 
-membuat file program 
+membuat file program navi.c untuk bagian pengguna dan wired.c sebagai server
 
-'nano navi.c'
+'nano navi.c' lalu diisi dengan code seperti ini:
 
 ```awk
 #include <stdio.h>
