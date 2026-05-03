@@ -318,10 +318,18 @@ lalu buat terminal baru sebanyak 2 tab dan jalankan `./navi` dan jangan lupa unt
 
 ### expected output 
 1.Koneksi via IP + PORT dari protocol.h
+
 2.Client asinkron (pakai select(), bukan fork)
+
 3.Server bisa handle banyak client (non-blocking)
+
 4.Nama harus unik (ini penting banget)
+
 5.Broadcast ke semua client
+
 6.Admin system + password + menu
+
 7.Logging format khusus (history.log)
+
+
 
