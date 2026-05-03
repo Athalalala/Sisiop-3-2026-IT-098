@@ -331,5 +331,10 @@ lalu buat terminal baru sebanyak 2 tab dan jalankan `./navi` dan jangan lupa unt
 
 7.Logging format khusus (history.log)
 
+![image link](Assets/gambar_67.png)
+
+![image link](Assets/gambar_68.png)
+
+![image link](Assets/gambar_69.png)
 
 
